@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="Orion Nebula illustration">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="45%" r="60%">
+      <stop offset="0%" stop-color="#7b4dff"/>
+      <stop offset="45%" stop-color="#2f1b73"/>
+      <stop offset="100%" stop-color="#090b1a"/>
+    </radialGradient>
+    <radialGradient id="cloud1" cx="40%" cy="40%" r="40%">
+      <stop offset="0%" stop-color="#ff9ac2" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#ff9ac2" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="cloud2" cx="60%" cy="55%" r="35%">
+      <stop offset="0%" stop-color="#76d7ff" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#76d7ff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <ellipse cx="650" cy="380" rx="420" ry="250" fill="url(#cloud1)"/>
+  <ellipse cx="980" cy="520" rx="430" ry="260" fill="url(#cloud2)"/>
+  <g fill="#ffffff" opacity="0.85">
+    <circle cx="220" cy="180" r="2.2"/>
+    <circle cx="320" cy="280" r="1.6"/>
+    <circle cx="520" cy="140" r="2.4"/>
+    <circle cx="690" cy="210" r="1.8"/>
+    <circle cx="860" cy="130" r="2.1"/>
+    <circle cx="1040" cy="230" r="1.7"/>
+    <circle cx="1240" cy="170" r="2.6"/>
+    <circle cx="1380" cy="270" r="1.9"/>
+    <circle cx="420" cy="560" r="2.2"/>
+    <circle cx="760" cy="630" r="2.0"/>
+    <circle cx="1120" cy="580" r="2.5"/>
+    <circle cx="1320" cy="680" r="1.8"/>
+  </g>
+</svg>

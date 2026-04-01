@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>?????</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="stars"></div>
+    <div class="stars2"></div>
+    <div class="stars3"></div>
+    <button class="lang-toggle" id="detailLangToggle" style="position:fixed; top:20px; right:20px; z-index:1300;">
+        <span class="lang-text">EN</span>
+    </button>
+
+    <main class="main-content">
+        <section class="tab-content active">
+            <div class="content-wrapper detail-page">
+                <a class="btn btn-secondary" href="index.html" data-lang="zh">????</a>
+                <a class="btn btn-secondary" href="index.html" data-lang="en">Back Home</a>
+                <h2 class="section-title" style="margin-top:2rem;" data-lang="zh">??</h2>
+                <h2 class="section-title" style="margin-top:2rem;" data-lang="en">Mars</h2>
+                <img class="feature-image feature-image-blend detail-hero-image" src="assets/images/planets/mars.png" alt="?????">
+                <div class="about-block">
+                    <p data-lang="zh">???????????????????????????????????????????????????????????????????????????????????????</p>
+                    <p data-lang="en">Mars is one of the most important terrestrial planets for comparative planetology. Its surface preserves volcanic structures, giant canyons, and evidence of past water activity. Current missions focus on climate history, habitability assessment, and preparation for future human exploration.</p>
+                    <div class="resource-links">
+                        <a class="resource-link" href="https://science.nasa.gov/mars/" target="_blank" rel="noopener noreferrer" data-lang="zh">NASA ????</a>
+                        <a class="resource-link" href="https://www.esa.int/Science_Exploration/Space_Science/Mars_Express" target="_blank" rel="noopener noreferrer" data-lang="zh">ESA ????</a>
+                        <a class="resource-link" href="https://science.nasa.gov/mars/" target="_blank" rel="noopener noreferrer" data-lang="en">NASA Mars Resources</a>
+                        <a class="resource-link" href="https://www.esa.int/Science_Exploration/Space_Science/Mars_Express" target="_blank" rel="noopener noreferrer" data-lang="en">ESA Mars Resources</a>
+                    </div>
+                    <div class="detail-nav">
+                        <a class="btn btn-secondary" href="jupiter.html" data-lang="zh">??????</a>
+                        <a class="btn btn-primary" href="saturn.html" data-lang="zh">??????</a>
+                        <a class="btn btn-secondary" href="jupiter.html" data-lang="en">Previous: Jupiter</a>
+                        <a class="btn btn-primary" href="saturn.html" data-lang="en">Next: Saturn</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script>
+        (function() {
+            const toggle = document.getElementById('detailLangToggle');
+            let lang = 'en';
+            function applyLanguage(l) {
+                document.documentElement.lang = l === 'zh' ? 'zh-CN' : 'en';
+                document.querySelectorAll('[data-lang]').forEach((el) => {
+                    el.style.display = el.getAttribute('data-lang') === l ? '' : 'none';
+                });
+                if (toggle) toggle.querySelector('.lang-text').textContent = l === 'zh' ? 'EN' : '?';
+            }
+            applyLanguage(lang);
+            localStorage.setItem('language', 'en');
+            if (toggle) {
+                toggle.addEventListener('click', function() {
+                    lang = lang === 'zh' ? 'en' : 'zh';
+                    localStorage.setItem('language', lang);
+                    applyLanguage(lang);
+                });
+            }
+        })();
+    </script>
+</body>
+</html>

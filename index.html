@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="title">天文探索 - 探索宇宙的奥秘</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- 星空背景 -->
+    <div class="stars"></div>
+    <div class="stars2"></div>
+    <div class="stars3"></div>
+
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-icon-wrapper">
+                    <svg class="logo-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <!-- 外层轨道 -->
+                        <circle class="orbit orbit-1" cx="50" cy="50" r="35" fill="none" stroke="url(#gradient1)" stroke-width="1.5"/>
+                        <!-- 中层轨道 -->
+                        <circle class="orbit orbit-2" cx="50" cy="50" r="25" fill="none" stroke="url(#gradient2)" stroke-width="1.5"/>
+                        <!-- 中心星体 -->
+                        <circle class="core" cx="50" cy="50" r="8" fill="url(#gradient3)"/>
+                        <!-- 外层星点 -->
+                        <circle class="star star-1" cx="50" cy="15" r="2" fill="#00ffff"/>
+                        <circle class="star star-2" cx="85" cy="50" r="2" fill="#00ffff"/>
+                        <circle class="star star-3" cx="50" cy="85" r="2" fill="#00ffff"/>
+                        <circle class="star star-4" cx="15" cy="50" r="2" fill="#00ffff"/>
+                        <!-- 渐变定义 -->
+                        <defs>
+                            <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#00ffff;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#b026ff;stop-opacity:1" />
+                            </linearGradient>
+                            <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#7c3aed;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#00ffff;stop-opacity:1" />
+                            </linearGradient>
+                            <radialGradient id="gradient3" cx="50%" cy="50%">
+                                <stop offset="0%" style="stop-color:#00ffff;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#b026ff;stop-opacity:1" />
+                            </radialGradient>
+                        </defs>
+                    </svg>
+                </div>
+                <div class="logo-text-wrapper">
+                    <span class="logo-text" data-i18n="logo">天文探索</span>
+                    <span class="logo-subtitle" data-i18n="logo.subtitle">ASTRONOMY EXPLORATION</span>
+                </div>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#" class="nav-link active" data-tab="home" data-i18n="nav.home">主页</a></li>
+                <li><a href="#" class="nav-link" data-tab="about" data-i18n="nav.about">关于我们</a></li>
+                <li><a href="#" class="nav-link" data-tab="projects" data-i18n="nav.projects">项目介绍</a></li>
+                <li><a href="#" class="nav-link" data-tab="contact" data-i18n="nav.contact">联系我</a></li>
+                <li>
+                    <button class="lang-toggle" id="langToggle" title="切换语言">
+                        <span class="lang-text">EN</span>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 主内容区域 -->
+    <main class="main-content">
+        <!-- 主页 -->
+        <section id="home" class="tab-content active">
+            <div class="hero-section">
+                <h1 class="hero-title">
+                    <span class="title-line" data-i18n="hero.title1">探索无限宇宙</span>
+                    <span class="title-line" data-i18n="hero.title2">揭秘星辰大海，从这里开始</span>
+                </h1>
+                <p class="hero-subtitle" data-i18n="hero.subtitle">在浩瀚的星空中，寻找属于你的那颗星</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" data-i18n="hero.btn1">开启旅程</button>
+                    <button class="btn btn-secondary" data-i18n="hero.btn2">了解更多</button>
+                </div>
+            </div>
+            <div class="celestial-gallery">
+                <a class="celestial-link-card" href="jupiter.html" aria-label="查看木星详细页">
+                    <img class="feature-image feature-image-blend jupiter-full" src="assets/images/planets/jupiter.png" alt="木星高清图">
+                </a>
+                <a class="celestial-link-card" href="mars.html" aria-label="查看火星详细页">
+                    <img class="feature-image feature-image-blend mars-full" src="assets/images/planets/mars.png" alt="火星高清图">
+                </a>
+                <a class="celestial-link-card" href="saturn.html" aria-label="查看土星详细页">
+                    <img class="feature-image feature-image-blend" src="assets/images/planets/saturn.png" alt="土星高清图">
+                </a>
+                <a class="celestial-link-card" href="neptune.html" aria-label="查看海王星详细页">
+                    <img class="feature-image feature-image-blend" src="assets/images/planets/neptune.png" alt="海王星高清图">
+                </a>
+            </div>
+
+            <section class="telescope-zone">
+                <h2 data-i18n="telescope.title">望远镜互动观测</h2>
+                <p data-i18n="telescope.desc">点击下方望远镜，打开可旋转的 3D 模型，查看月球表面地形细节。</p>
+                <button class="telescope-btn" id="openTelescope" type="button" data-i18n="telescope.btn">
+                    <span class="telescope-icon">🔭</span>
+                    <span class="telescope-label">启动望远镜</span>
+                </button>
+            </section>
+        </section>
+
+        <!-- 关于我们 -->
+        <section id="about" class="tab-content">
+            <div class="content-wrapper">
+                <h2 class="section-title" data-i18n="about.title">关于我们</h2>
+                <div class="about-sections">
+                    <article class="about-block">
+                        <h3 data-i18n="about.bg.title">背景介绍</h3>
+                        <p data-i18n="about.bg.text">天文探索团队源于成员对宇宙的持续兴趣与学术探索的热情。团队以观测实践与理论学习相结合的方式，围绕基础天文现象、星空文化及科学传播展开活动。在持续的学习与实践中，成员逐步建立起对天文学的系统认知，并尝试将专业知识转化为面向公众的科普内容，提升科学传播能力。</p>
+                    </article>
+                    <article class="about-block">
+                        <h3 data-i18n="about.team.title">团队与合作机构</h3>
+                        <p data-i18n="about.team.text">团队成员由具备不同兴趣方向的高中生组成，分工涵盖观测记录、基础数据整理、内容撰写与视觉呈现等。团队在校内外积极开展交流，与学校社团、天文爱好者组织及科普平台建立合作关系，参与观测活动与科普实践。通过协作与项目推进，团队不断提升成员的研究能力、沟通能力与跨领域合作能力。</p>
+                    </article>
+                    <article class="about-block">
+                        <h3 data-i18n="about.mission.title">使命与愿景</h3>
+                        <p class="about-mission-body">
+                            <strong data-i18n="about.mission.label1">使命：</strong><span data-i18n="about.mission.p1">让高质量的天文知识与观测体验触达更多人。</span><br>
+                            <strong data-i18n="about.mission.label2">愿景：</strong><span data-i18n="about.mission.p2">成为连接星空与公众的可靠桥梁，陪伴每一位探索者仰望夜空、理解宇宙。</span>
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- 项目介绍 -->
+        <section id="projects" class="tab-content">
+            <div class="content-wrapper">
+                <h2 class="section-title" data-i18n="projects.title">项目介绍</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <div class="project-icon">🌀</div>
+                        </div>
+                        <div class="project-info">
+                            <h3 data-i18n="projects.p1.title">Minnie-Astrophysics</h3>
+                            <p data-i18n="projects.p1.desc">基于 LIGO 真实数据，围绕 GW150914 与 GW170817 完成引力波信号的频谱分析、滤波清洗、Q-transform 可视化与音频化（WAV）流程，将“时空涟漪”转化为可看、可听的科研体验。</p>
+                            <a class="project-link" href="minnie-astrophysics.html" data-i18n="projects.p1.link">查看项目详情</a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image">
+                            <div class="project-icon">⭐</div>
+                        </div>
+                        <div class="project-info">
+                            <h3 data-i18n="projects.p2.title">深空天体摄影</h3>
+                            <p data-i18n="projects.p2.desc">使用专业设备拍摄深空天体，包括星云、星系、星团等，记录宇宙的壮美。</p>
+                            <div class="project-tags">
+                                <span data-i18n="projects.p2.tag1">摄影</span>
+                                <span data-i18n="projects.p2.tag2">深空</span>
+                                <span data-i18n="projects.p2.tag3">后期</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image">
+                            <div class="project-icon">🛰️</div>
+                        </div>
+                        <div class="project-info">
+                            <h3 data-i18n="projects.p3.title">卫星追踪系统</h3>
+                            <p data-i18n="projects.p3.desc">开发实时卫星追踪系统，预测卫星过境时间，帮助天文爱好者观测人造卫星。</p>
+                            <div class="project-tags">
+                                <span data-i18n="projects.p3.tag1">开发</span>
+                                <span data-i18n="projects.p3.tag2">追踪</span>
+                                <span data-i18n="projects.p3.tag3">预测</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 联系我 -->
+        <section id="contact" class="tab-content">
+            <div class="content-wrapper">
+                <h2 class="section-title" data-i18n="contact.title">联系我</h2>
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <h3 data-i18n="contact.subtitle">让我们一起探索宇宙</h3>
+                        <p data-i18n="contact.desc">如果您对天文学感兴趣，或者想要交流观测经验，欢迎与我联系！</p>
+                        <div class="contact-methods">
+                            <div class="contact-item">
+                                <span class="contact-icon">📧</span>
+                                <div>
+                                    <h4 data-i18n="contact.email.label">邮箱</h4>
+                                    <p>tengziyu0923@icloud.com</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <span class="contact-icon">📞</span>
+                                <div>
+                                    <h4 data-i18n="contact.social.label">电话</h4>
+                                    <p data-i18n="contact.social.desc">+86 16622374420</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <span class="contact-icon">📍</span>
+                                <div>
+                                    <h4 data-i18n="contact.location.label">位置</h4>
+                                    <p data-i18n="contact.location.desc">中国 · 北京</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <form class="contact-form">
+                        <div class="form-group">
+                            <label for="name" data-i18n="contact.form.name">姓名</label>
+                            <input type="text" id="name" name="name" data-i18n-placeholder="contact.form.namePlaceholder" placeholder="请输入您的姓名" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" data-i18n="contact.form.email">邮箱</label>
+                            <input type="email" id="email" name="email" data-i18n-placeholder="contact.form.emailPlaceholder" placeholder="请输入您的邮箱" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject" data-i18n="contact.form.subject">主题</label>
+                            <input type="text" id="subject" name="subject" data-i18n-placeholder="contact.form.subjectPlaceholder" placeholder="请输入邮件主题" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message" data-i18n="contact.form.message">留言</label>
+                            <textarea id="message" name="message" rows="5" data-i18n-placeholder="contact.form.messagePlaceholder" placeholder="请输入您的留言..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block" data-i18n="contact.form.submit">发送消息</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="model-modal" id="terrainModal" aria-hidden="true">
+        <div class="model-modal-content">
+            <button class="model-close" id="closeTelescope" type="button" aria-label="关闭">×</button>
+            <h3 data-i18n="telescope.modalTitle">月球地形 3D 观测（Sketchfab）</h3>
+            <iframe
+                title="Moon terrain model"
+                frameborder="0"
+                allowfullscreen
+                mozallowfullscreen="true"
+                webkitallowfullscreen="true"
+                allow="autoplay; fullscreen; xr-spatial-tracking"
+                xr-spatial-tracking
+                execution-while-out-of-viewport
+                execution-while-not-rendered
+                web-share
+                src="https://sketchfab.com/models/ce9c009b517b421eab8c8429b536382f/embed">
+            </iframe>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <p>&copy; 2026 <span data-i18n="footer.brand">天文探索</span>. <span data-i18n="footer.text">探索无限，发现可能.</span></p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
