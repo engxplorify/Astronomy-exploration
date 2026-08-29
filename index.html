@@ -80,6 +80,28 @@
                     <button class="btn btn-secondary" data-i18n="hero.btn2">了解更多</button>
                 </div>
             </div>
+
+            <section class="daily-sky" id="dailySky" aria-labelledby="dailySkyTitle">
+                <div class="daily-sky-heading">
+                    <div>
+                        <p class="daily-sky-kicker" data-i18n="daily.kicker">NASA · ASTRONOMY PICTURE OF THE DAY</p>
+                        <h2 id="dailySkyTitle" data-i18n="daily.title">今日宇宙</h2>
+                    </div>
+                    <time class="daily-sky-date" id="dailySkyDate">—</time>
+                </div>
+                <article class="daily-sky-card" id="dailySkyCard" aria-busy="true">
+                    <div class="daily-sky-media">
+                        <img id="dailySkyImage" src="assets/images/daily-sky-fallback.jpg" alt="星轨环绕天文台的 NASA 每日天文图片">
+                        <iframe id="dailySkyVideo" title="NASA Astronomy Picture of the Day video" allow="fullscreen; picture-in-picture" hidden></iframe>
+                    </div>
+                    <div class="daily-sky-copy">
+                        <p class="daily-sky-status" id="dailySkyStatus" data-i18n="daily.loading">正在接收 NASA 深空影像…</p>
+                        <h3 id="dailySkyName" data-i18n="daily.fallbackTitle">来自深空的今日影像</h3>
+                        <p id="dailySkyDescription" data-i18n="daily.fallbackDesc">每日连接 NASA 天文图片数据库，带你观察此刻被记录下的宇宙。</p>
+                        <a id="dailySkyLink" class="daily-sky-link" href="https://apod.nasa.gov/apod/astropix.html" target="_blank" rel="noopener noreferrer" data-i18n="daily.link">在 NASA 查看原图 ↗</a>
+                    </div>
+                </article>
+            </section>
             <div class="celestial-gallery">
                 <a class="celestial-link-card" href="jupiter.html" aria-label="查看木星详细页">
                     <img class="feature-image feature-image-blend jupiter-full" src="assets/images/planets/jupiter.png" alt="木星高清图">
@@ -146,16 +168,12 @@
                     </div>
                     <div class="project-card">
                         <div class="project-image">
-                            <div class="project-icon">⭐</div>
+                            <div class="project-icon">🌌</div>
                         </div>
                         <div class="project-info">
-                            <h3 data-i18n="projects.p2.title">深空天体摄影</h3>
-                            <p data-i18n="projects.p2.desc">使用专业设备拍摄深空天体，包括星云、星系、星团等，记录宇宙的壮美。</p>
-                            <div class="project-tags">
-                                <span data-i18n="projects.p2.tag1">摄影</span>
-                                <span data-i18n="projects.p2.tag2">深空</span>
-                                <span data-i18n="projects.p2.tag3">后期</span>
-                            </div>
+                            <h3 data-i18n="projects.p2.title">Dark Energy</h3>
+                            <p data-i18n="projects.p2.desc">基于 Tonry 等人（2003）的 Ia 型超新星数据，通过线性回归、最大似然估计与贝叶斯 MCMC 采样测量哈勃常数，将红移—距离观测转化为宇宙膨胀速率的统计证据。</p>
+                            <a class="project-link" href="dark-energy.html" data-i18n="projects.p2.link">查看项目详情</a>
                         </div>
                     </div>
                     <div class="project-card">
@@ -170,6 +188,16 @@
                                 <span data-i18n="projects.p3.tag2">追踪</span>
                                 <span data-i18n="projects.p3.tag3">预测</span>
                             </div>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image">
+                            <div class="project-icon">🎛️</div>
+                        </div>
+                        <div class="project-info">
+                            <h3 data-i18n="projects.p4.title">Minnie’s Personal Website</h3>
+                            <p data-i18n="projects.p4.desc">一个互动宇宙学实验室，通过调节暗能量与宇宙参数，观察星系形成、宇宙命运和生命存在条件如何随之改变。</p>
+                            <a class="project-link" href="https://universe-parameter-game.tengziyu0923.chatgpt.site/#playground" target="_blank" rel="noopener noreferrer" data-i18n="projects.p4.link">进入互动实验 ↗</a>
                         </div>
                     </div>
                 </div>
@@ -260,4 +288,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-

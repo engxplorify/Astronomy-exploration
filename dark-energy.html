@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark Energy Project Details</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .project-article { max-width: 980px; margin: 0 auto; }
+        .project-article .about-block { margin-bottom: 1.2rem; }
+        .project-article h3 { margin-bottom: 0.8rem; color: var(--neon-cyan); }
+        .project-article ul { margin: 0.6rem 0 0.6rem 1.2rem; color: var(--text-secondary); line-height: 1.9; }
+        .project-article li { margin-bottom: 0.35rem; }
+        .project-article pre {
+            background: rgba(8, 12, 25, 0.85);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1rem;
+            overflow-x: auto;
+            color: #d6e4ff;
+            line-height: 1.6;
+        }
+        .pipeline { color: var(--text-primary); font-weight: 600; margin: 0.5rem 0 0.4rem; }
+        .result-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1.2rem; }
+        .result-card { padding: 1.2rem; border: 1px solid var(--border-color); background: rgba(255,255,255,0.02); }
+        .result-card strong { display: block; color: var(--text-primary); font-size: 1.3rem; margin-top: 0.3rem; }
+        .github-link { display: inline-block; margin-top: 1.2rem; color: var(--text-primary); text-decoration: none; border-bottom: 1px solid var(--text-secondary); padding-bottom: 0.2rem; }
+        @media (max-width: 720px) { .result-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <div class="stars"></div>
+    <div class="stars2"></div>
+    <div class="stars3"></div>
+
+    <main class="main-content">
+        <section class="tab-content active">
+            <div class="content-wrapper project-article">
+                <a class="btn btn-secondary" href="index.html">Back Home</a>
+                <h2 class="section-title" style="margin-top:2rem;">🌌 Dark Energy</h2>
+
+                <div class="about-block">
+                    <h3>Measuring Cosmic Expansion with Python</h3>
+                    <p>From Type Ia supernova observations to the Hubble constant: connect real redshift-distance data, statistical modeling, and modern cosmology.</p>
+                    <a class="github-link" href="https://github.com/minnie-0923/Dark-Energy" target="_blank" rel="noopener noreferrer">Open the project on GitHub ↗</a>
+                </div>
+
+                <div class="about-block">
+                    <h3>🌌 Project Overview</h3>
+                    <p>This project analyzes the Tonry et al. (2003) Type Ia supernova dataset to estimate the Hubble constant, H₀, and quantify its uncertainty.</p>
+                    <ul>
+                        <li><strong>Dataset:</strong> redshift and distance-modulus measurements from Type Ia supernovae</li>
+                        <li><strong>Physical model:</strong> Hubble’s law, v = H₀d</li>
+                        <li><strong>Research focus:</strong> compare linear fitting, weighted least squares, maximum likelihood, and Bayesian inference</li>
+                    </ul>
+                    <p><strong>Core idea:</strong> turn raw astronomical observations into evidence for the expansion rate of the universe.</p>
+                </div>
+
+                <div class="about-block">
+                    <h3>✨ Portfolio Highlights</h3>
+                    <ul>
+                        <li>Real Type Ia supernova observations from Tonry et al. (2003)</li>
+                        <li>A complete data preprocessing and physical-unit conversion workflow</li>
+                        <li>Linear and weighted least-squares estimates of H₀</li>
+                        <li>Maximum-likelihood modeling with intrinsic scatter</li>
+                        <li>Bayesian posterior sampling with 32 MCMC walkers</li>
+                        <li>Corner plots and autocorrelation diagnostics for uncertainty analysis</li>
+                    </ul>
+                </div>
+
+                <div class="about-block">
+                    <h3>🧠 Physical Context</h3>
+                    <p>At low redshift, cosmic expansion can be approximated by Hubble’s law:</p>
+                    <pre>v = H₀ d</pre>
+                    <ul>
+                        <li><strong>v</strong> is a galaxy’s recession velocity</li>
+                        <li><strong>d</strong> is its distance from Earth</li>
+                        <li><strong>H₀</strong> is the present-day expansion rate of the universe</li>
+                    </ul>
+                    <p>Type Ia supernovae act as standardized candles: brightness gives distance, while host-galaxy spectra provide redshift.</p>
+                </div>
+
+                <div class="about-block">
+                    <h3>🧪 Analysis Pipeline</h3>
+                    <p class="pipeline">Tonry data → preprocessing → visual exploration → weighted fitting → MLE → Bayesian MCMC → posterior diagnostics</p>
+                    <ul>
+                        <li>1) Read the astronomical table with Astropy</li>
+                        <li>2) Convert distance modulus into distance in Mpc</li>
+                        <li>3) Propagate logarithmic distance uncertainty</li>
+                        <li>4) Inspect velocity versus distance on linear and logarithmic axes</li>
+                        <li>5) Select the low-redshift 0–700 Mpc fitting range</li>
+                        <li>6) Compare statistical estimators and their uncertainty assumptions</li>
+                    </ul>
+                    <pre># Weighted model
+d = m * v + b
+H0 = 1 / m
+
+# Bayesian posterior
+log P(theta | data) = log P(data | theta) + log P(theta)</pre>
+                </div>
+
+                <div class="about-block">
+                    <h3>📊 Representative Results</h3>
+                    <p>The included analysis demonstrates how the inferred Hubble constant changes when measurement uncertainty and intrinsic scatter are modeled differently.</p>
+                    <div class="result-grid">
+                        <div class="result-card">Weighted least squares<strong>67.80 ± 0.51</strong>km/s/Mpc</div>
+                        <div class="result-card">Maximum likelihood<strong>71.61</strong>km/s/Mpc</div>
+                        <div class="result-card">Bayesian MCMC<strong>Posterior</strong>m, b, and log f</div>
+                    </div>
+                </div>
+
+                <div class="about-block">
+                    <h3>🔭 Why the Estimates Differ</h3>
+                    <p>The gap between weighted least squares and MLE/MCMC is scientifically meaningful rather than a failure. Each method makes different assumptions about observational uncertainty and unexplained intrinsic scatter, which changes the inferred cosmological parameter.</p>
+                </div>
+
+                <div class="about-block">
+                    <h3>🗂️ Project Structure</h3>
+                    <pre>Dark-Energy/
+├── data/
+│   └── Tonry_2003.vot
+├── src/
+│   ├── data.py
+│   ├── visualization.py
+│   ├── linear.py
+│   ├── MLE.py
+│   └── MCMC.py
+├── notebooks/
+│   └── darkenergy.ipynb
+├── results/
+├── requirements.txt
+└── README.md</pre>
+                </div>
+
+                <div class="about-block">
+                    <h3>⚙️ Tech Stack</h3>
+                    <ul>
+                        <li>Python</li>
+                        <li>Astropy</li>
+                        <li>NumPy / SciPy</li>
+                        <li>Matplotlib</li>
+                        <li>emcee / corner</li>
+                    </ul>
+                </div>
+
+                <div class="about-block">
+                    <h3>🚀 Quick Start</h3>
+                    <pre>git clone https://github.com/minnie-0923/Dark-Energy.git
+cd Dark-Energy
+pip install -r requirements.txt
+jupyter notebook notebooks/darkenergy.ipynb</pre>
+                </div>
+
+                <div class="about-block">
+                    <h3>📈 Why This Project Stands Out</h3>
+                    <ul>
+                        <li>Connects observational astronomy to an important cosmological parameter</li>
+                        <li>Compares frequentist and Bayesian methods in one reproducible workflow</li>
+                        <li>Treats measurement uncertainty and intrinsic scatter explicitly</li>
+                        <li>Turns abstract statistical inference into clear physical interpretation</li>
+                    </ul>
+                </div>
+
+                <div class="about-block">
+                    <h3>🙏 Data & Inspiration</h3>
+                    <p>Data source: Tonry et al. (2003) Type Ia supernova observations. The project was inspired by ASTRON1221 and developed into a focused comparison of Hubble-constant estimators.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

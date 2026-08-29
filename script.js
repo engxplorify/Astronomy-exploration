@@ -13,6 +13,12 @@ const translations = {
         'hero.subtitle': '在浩瀚的星空中，寻找属于你的那颗星',
         'hero.btn1': '开启旅程',
         'hero.btn2': '了解更多',
+        'daily.kicker': 'NASA · 每日天文图片',
+        'daily.title': '今日宇宙',
+        'daily.loading': '正在接收 NASA 深空影像…',
+        'daily.fallbackTitle': '来自深空的今日影像',
+        'daily.fallbackDesc': '每日连接 NASA 天文图片数据库，带你观察此刻被记录下的宇宙。',
+        'daily.link': '在 NASA 查看原图 ↗',
         'feature.obs.title': '木星：巨行星风暴',
         'feature.obs.desc': '木星是太阳系体积最大的行星，其著名的大红斑是持续数百年的高压风暴。通过望远镜可观察到云带结构与卫星凌日现象。',
         'feature.photo.title': '火星：红色行星地貌',
@@ -42,18 +48,17 @@ const translations = {
         'projects.p1.tag2': 'LIGO',
         'projects.p1.tag3': 'Python',
         'projects.p1.link': '查看项目详情',
-        'projects.p2.title': '深空天体摄影',
-        'projects.p2.desc': '使用专业设备拍摄深空天体，包括星云、星系、星团等，记录宇宙的壮美。',
-        'projects.p2.tag1': '摄影',
-        'projects.p2.tag2': '深空',
-        'projects.p2.tag3': '后期',
+        'projects.p2.title': 'Dark Energy',
+        'projects.p2.desc': '基于 Tonry 等人（2003）的 Ia 型超新星数据，通过线性回归、最大似然估计与贝叶斯 MCMC 采样测量哈勃常数，将红移—距离观测转化为宇宙膨胀速率的统计证据。',
+        'projects.p2.link': '查看项目详情',
         'projects.p3.title': '卫星追踪系统',
         'projects.p3.desc': '开发实时卫星追踪系统，预测卫星过境时间，帮助天文爱好者观测人造卫星。',
         'projects.p3.tag1': '开发',
         'projects.p3.tag2': '追踪',
         'projects.p3.tag3': '预测',
-        'projects.p4.title': '行星数据可视化',
-        'projects.p4.desc': '收集整理行星数据，通过可视化方式展示太阳系各行星的特征和轨道信息。',
+        'projects.p4.title': 'Minnie 的个人网站',
+        'projects.p4.desc': '一个互动宇宙学实验室，通过调节暗能量与宇宙参数，观察星系形成、宇宙命运和生命存在条件如何随之改变。',
+        'projects.p4.link': '进入互动实验 ↗',
         'projects.p4.tag1': '数据',
         'projects.p4.tag2': '可视化',
         'projects.p4.tag3': '教育',
@@ -90,6 +95,12 @@ const translations = {
         'hero.subtitle': 'In the vast starry sky, find your own star',
         'hero.btn1': 'Begin the Journey',
         'hero.btn2': 'Learn More',
+        'daily.kicker': 'NASA · ASTRONOMY PICTURE OF THE DAY',
+        'daily.title': 'The Universe Today',
+        'daily.loading': 'Receiving today’s deep-space image from NASA…',
+        'daily.fallbackTitle': 'Today’s View from Deep Space',
+        'daily.fallbackDesc': 'A daily connection to NASA’s astronomy archive and the universe being documented right now.',
+        'daily.link': 'View original at NASA ↗',
         'feature.obs.title': 'Jupiter: Giant Planet Storms',
         'feature.obs.desc': 'Jupiter is the largest planet in the Solar System. Its Great Red Spot is a persistent high-pressure storm that has lasted for centuries, with visible cloud bands and moon transits.',
         'feature.photo.title': 'Mars: Red Planet Terrain',
@@ -119,18 +130,17 @@ const translations = {
         'projects.p1.tag2': 'LIGO',
         'projects.p1.tag3': 'Python',
         'projects.p1.link': 'View Project Details',
-        'projects.p2.title': 'Deep Sky Astrophotography',
-        'projects.p2.desc': 'Using professional equipment to photograph deep sky objects, including nebulae, galaxies, star clusters, etc., recording the magnificence of the universe.',
-        'projects.p2.tag1': 'Photography',
-        'projects.p2.tag2': 'Deep Sky',
-        'projects.p2.tag3': 'Post-processing',
+        'projects.p2.title': 'Dark Energy',
+        'projects.p2.desc': 'Using the Tonry et al. (2003) Type Ia supernova dataset, this project estimates the Hubble constant through linear regression, maximum-likelihood estimation, and Bayesian MCMC sampling—turning redshift-distance observations into statistical evidence for cosmic expansion.',
+        'projects.p2.link': 'View Project Details',
         'projects.p3.title': 'Satellite Tracking System',
         'projects.p3.desc': 'Develop a real-time satellite tracking system to predict satellite transit times and help astronomy enthusiasts observe artificial satellites.',
         'projects.p3.tag1': 'Development',
         'projects.p3.tag2': 'Tracking',
         'projects.p3.tag3': 'Prediction',
-        'projects.p4.title': 'Planetary Data Visualization',
-        'projects.p4.desc': 'Collect and organize planetary data, and display the characteristics and orbital information of planets in the solar system through visualization.',
+        'projects.p4.title': 'Minnie’s Personal Website',
+        'projects.p4.desc': 'An interactive cosmology lab where visitors adjust dark energy and universe parameters to see how galaxy formation, cosmic fate, and the conditions for observers change.',
+        'projects.p4.link': 'Enter the Playground ↗',
         'projects.p4.tag1': 'Data',
         'projects.p4.tag2': 'Visualization',
         'projects.p4.tag3': 'Education',
@@ -181,6 +191,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // 初始化：显示主页
     showTab('home');
+    loadDailySky();
+    // 页面长时间保持打开时，每小时检查一次 NASA 当日更新。
+    window.setInterval(loadDailySky, 60 * 60 * 1000);
 
     // 为每个导航链接添加点击事件
     navLinks.forEach(link => {
@@ -319,6 +332,51 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+// NASA Astronomy Picture of the Day（使用官方公开 DEMO_KEY）
+async function loadDailySky() {
+    const card = document.getElementById('dailySkyCard');
+    const image = document.getElementById('dailySkyImage');
+    const video = document.getElementById('dailySkyVideo');
+    const date = document.getElementById('dailySkyDate');
+    const name = document.getElementById('dailySkyName');
+    const description = document.getElementById('dailySkyDescription');
+    const status = document.getElementById('dailySkyStatus');
+    const link = document.getElementById('dailySkyLink');
+
+    if (!card || !image || !video || !date || !name || !description || !status || !link) return;
+
+    try {
+        const apiUrl = `https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&thumbs=true&_=${Date.now()}`;
+        const response = await fetch(apiUrl, { cache: 'no-store' });
+        if (!response.ok) throw new Error(`NASA APOD request failed: ${response.status}`);
+        const data = await response.json();
+
+        date.textContent = data.date || '';
+        name.textContent = data.title || translations[currentLang]['daily.fallbackTitle'];
+        description.textContent = data.explanation || translations[currentLang]['daily.fallbackDesc'];
+        link.href = data.hdurl || data.url || 'https://apod.nasa.gov/apod/astropix.html';
+        status.textContent = data.copyright ? `© ${data.copyright}` : 'NASA / APOD';
+
+        if (data.media_type === 'video') {
+            image.hidden = true;
+            video.hidden = false;
+            video.src = data.url;
+        } else {
+            image.src = data.url;
+            image.alt = data.title || 'NASA Astronomy Picture of the Day';
+        }
+    } catch (error) {
+        console.warn('NASA APOD unavailable; using local fallback image.', error);
+        const locale = translations[currentLang];
+        status.textContent = currentLang === 'zh' ? 'NASA 每日图片暂时无法连接' : 'NASA daily image is temporarily unavailable';
+        name.textContent = locale['daily.fallbackTitle'];
+        description.textContent = locale['daily.fallbackDesc'];
+        date.textContent = new Date().toLocaleDateString(currentLang === 'zh' ? 'zh-CN' : 'en-US');
+    } finally {
+        card.setAttribute('aria-busy', 'false');
+    }
+}
+
 // 更新语言
 function updateLanguage(lang) {
     // 更新所有带有data-i18n属性的元素
@@ -348,4 +406,3 @@ function updateLanguage(lang) {
         langToggle.querySelector('.lang-text').textContent = lang === 'zh' ? 'EN' : '中';
     }
 }
-
